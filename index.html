@@ -13,8 +13,19 @@ input,select,textarea{width:100%;padding:11px;border:1px solid #d0d5dd;border-ra
 .list{display:grid;gap:9px}.item{border:1px solid var(--line);border-radius:14px;padding:12px}.badge{display:inline-block;padding:4px 8px;background:#eef2ff;border-radius:999px;font-size:11px;font-weight:800}.success{color:var(--green)}.danger{color:var(--red)}.empty{text-align:center;padding:25px;color:var(--muted)}
 table{width:100%;border-collapse:collapse}th,td{text-align:right;padding:9px;border-bottom:1px solid var(--line);font-size:13px}
 .carrow{width:100%;display:grid;grid-template-columns:110px 1fr 88px;gap:0;align-items:center;border:0;border-top:1px solid var(--line);background:white;text-align:right;padding:0;min-height:68px;cursor:pointer}.carrow>div{padding:10px}.car-number{font-size:22px;color:var(--blue)}.carrow:active{background:#f2f6ff}@media(max-width:420px){.carrow{grid-template-columns:82px 1fr 68px}.car-number{font-size:18px}.carrow .muted{font-size:11px}}
-</style></head><body>
-<header><h1>SKANDAR Fleet</h1><p>نظام إدارة السيارات والفواتير والتصدير</p></header><nav id="nav"></nav><main id="app"></main>
+</style>
+<style id="skandar-auto-brand">
+.skandar-brand-logo{
+  width:72px;height:72px;object-fit:contain;display:block;
+  margin-left:10px;flex:0 0 auto;
+}
+.skandar-brand-wrap{
+  display:flex;align-items:center;gap:12px;direction:ltr;
+}
+</style>
+
+</head><body>
+<header><div class="skandar-brand-wrap"><img class="skandar-brand-logo" src="skandar-auto-logo.png" alt="SKANDAR AUTO"><div><h1>SKANDAR Fleet</h1><p>نظام إدارة السيارات والفواتير والتصدير</p></div></div></header><nav id="nav"></nav><main id="app"></main>
 <script>
 const DB="skandar_fleet_db";let data=JSON.parse(localStorage.getItem(DB)||'{"cars":[],"invoices":[],"exports":[]}');let page="home";data.cars=(data.cars||[]).map((c,i)=>({...c,carNo:c.carNo||String(i+1).padStart(3,"0")}));data.invoices=data.invoices||[];data.exports=data.exports||[];
 const menu=[["home","الرئيسية"],["cars","السيارات"],["invoices","الفواتير"],["exports","التصدير"],["backup","البيانات"]];
